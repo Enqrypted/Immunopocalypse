@@ -1,0 +1,277 @@
+fileFormatVersion: 2
+guid: 7bd60224bf9b9d74c98fc732a3276124
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AdrenalMat
+    second: {fileID: 2100000, guid: 921c7bb11cf9b7849918fa13ff51cb47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Artery_BlueMat
+    second: {fileID: 2100000, guid: e361e09eb9477294581719146fdef80f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Artery_RedMat
+    second: {fileID: 2100000, guid: ef147b7e38d157240addb9f5de694c0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black001Mat
+    second: {fileID: 2100000, guid: ff913828f533b1349804c4dd5d3265e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackMat
+    second: {fileID: 2100000, guid: e89442263fa9c62408752959e635d85d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue001Mat
+    second: {fileID: 2100000, guid: 83a4c3c9a5172274595142eaf130fc97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlueMat
+    second: {fileID: 2100000, guid: 3527cdd533a00b7439f0ab28ca20ea16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brain_1Mat
+    second: {fileID: 2100000, guid: c81f76d94a67ced4a8f48c46e4bc6e36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brain_2Mat
+    second: {fileID: 2100000, guid: bc616c033b40b3f40b9de7f17640dec1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brain_3Mat
+    second: {fileID: 2100000, guid: 2889dcde227a74840ab834013925877f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CerebellumMat
+    second: {fileID: 2100000, guid: 6ba04692a1cf0684cb28af85322b6e71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColonMat
+    second: {fileID: 2100000, guid: 77febb41fd9be854c9178e9ad599c91c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GallbladderMat
+    second: {fileID: 2100000, guid: ef579332d6e14b3408b0e8c3e577120a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gum_1Mat
+    second: {fileID: 2100000, guid: edbba801306792943b217a6b7170d58a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gum_2Mat
+    second: {fileID: 2100000, guid: 08f7b5d9c7d1de645a7da5d98853ba88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeartMat
+    second: {fileID: 2100000, guid: 9fd9e628d3f607e41b9695ff20c7e6b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KidneysMat
+    second: {fileID: 2100000, guid: dc589c9199beb8f4fa84b369fb35e11e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LanguageMat
+    second: {fileID: 2100000, guid: e45d74befa4c00d418de72277474e782, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LiverMat
+    second: {fileID: 2100000, guid: 76acc0fb50f5bfb4b9eafffdbd2558e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LungsMat
+    second: {fileID: 2100000, guid: d61c94434ed6f5740aa08dd494723881, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OvaryMat
+    second: {fileID: 2100000, guid: fa751e88d92e8a0418e85830ec78c99e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PituitaryMat
+    second: {fileID: 2100000, guid: 183050dbbe3b93f4f82f7b274d3826c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red001Mat
+    second: {fileID: 2100000, guid: 3c539b51036292542867a3c5b8578236, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedMat
+    second: {fileID: 2100000, guid: 393e9fec9d0c3b1498e1f0c07eb8b5c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Small_intestinesMat
+    second: {fileID: 2100000, guid: cd98ec4f39e918a43a39fae652a90016, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StemMat
+    second: {fileID: 2100000, guid: a71fb732c454c154185b9b1bcee0d40b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StomachMat
+    second: {fileID: 2100000, guid: 677ba19afcdb2ef4cb1425a04bec720d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth_1Mat
+    second: {fileID: 2100000, guid: a3d157f2713207c49b8ffc06f9b3cc77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth_2Mat
+    second: {fileID: 2100000, guid: bac1b67b9d244fb4f9f54e54b9cc54c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TracheaMat
+    second: {fileID: 2100000, guid: 6e8b308247e52074eadf88e567d07bb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UricMat
+    second: {fileID: 2100000, guid: 88c45e3bb9c70d741b3abcc176b4a71f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Urinary_canalMat
+    second: {fileID: 2100000, guid: a161f55d6c606914996faa32fdb38160, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VaginaMat
+    second: {fileID: 2100000, guid: 55cbb6dfd8c523145a70026bd4ee13aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White001Mat
+    second: {fileID: 2100000, guid: ebaa9a1079bbe3b4180add52ba5fe19a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteMat
+    second: {fileID: 2100000, guid: b46610254ca693b44847d9c20069345a, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 1
+    materialSearch: 2
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
