@@ -19,10 +19,27 @@ public class UpgradesUIManager : MonoBehaviour
         backToGame.onClick.AddListener(CloseDefenseUpgrades);
     }
 
+    IEnumerator openUpgradeInfo(GameObject foundPanel)
+    {
+        yield return new WaitForSeconds(.2f);
+
+        if (foundPanel != null)
+        {
+            foreach (Transform upg in foundPanel.transform)
+            {
+                if (upg.GetComponent<UpgradeInfoManager>().unlocked == true)
+                {
+                    upg.GetComponent<UpgradeInfoManager>().DisplayUpgrade();
+                }
+            }
+        }
+
+    }
+
     public void OpenDefenseUpgrades() {
 
 
-
+        GameObject foundPanel = null;
         foreach (GameObject panel in UpgradePanels)
         {
             if (panel != null && panel.name != null)
@@ -30,6 +47,9 @@ public class UpgradesUIManager : MonoBehaviour
                 if (panel.name.Contains(UIManager.selectedDefense))
                 {
                     panel.SetActive(true);
+
+                    foundPanel = panel;
+
                 }
                 else
                 {
@@ -40,7 +60,12 @@ public class UpgradesUIManager : MonoBehaviour
 
         UpgradesPanel.SetActive(true);
 
+
         UpgradesPanel.transform.Find("UpgradesTitle").Find("title").GetComponent<TextMeshProUGUI>().text = UIManager.selectedDefense + " Upgrades";
+
+        StartCoroutine(openUpgradeInfo(foundPanel));
+
+
     }
 
     public void CloseDefenseUpgrades() {

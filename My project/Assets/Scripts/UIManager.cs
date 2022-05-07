@@ -59,7 +59,6 @@ public class UIManager : MonoBehaviour
 
     void SelectDefense(Transform t) {
         selectedDefense = t.parent.name;
-        //print(t.parent.name);
     }
 
     void ChangeDefense(){
