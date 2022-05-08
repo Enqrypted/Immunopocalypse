@@ -42,7 +42,7 @@ public class UpgradeInfoManager : MonoBehaviour
     {
         foreach (RoundManager.Upgrade upgrade in upgradeList)
         {
-            if (upgrade.UpgradeName == findWithName)
+            if (upgrade.UpgradeName.ToLower().Trim() == findWithName.ToLower().Trim())
             {
                 return upgrade;
             }

@@ -57,7 +57,7 @@ public class RoundManager : MonoBehaviour
                 new Upgrade("Bacterial antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to target and destroy bacteria better."),
                 new Upgrade("Fungal antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to target and destroy fungi better."),
                 new Upgrade("Viral antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to taget and destroy viruses better."),
-                new Upgrade("Heal the trachea and lungs", new List<int> { 150}, 0, "Use IP to heal component")
+                new Upgrade("Heal the trachea & lungs", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "Trachea and lungs produce a mucus to trap microbes. White blood cells engulf remaining microbes and produce antibodies."),
             new Defense("Stomach & Gut", false, 1000, new List<Upgrade>{
                 new Upgrade("Acidic discharge", new List<int> { 300, 150}, 0, "Produce hydrochloric acid to destroy microbes and provide stomach enzymes with optimal pH for them to function."),
@@ -100,7 +100,7 @@ public class RoundManager : MonoBehaviour
                 new Upgrade("Heal the kidneys & bladder", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "The kidneys and bladder are not a part of the immune system. Kidneys filter blood to remove waste and transport it and excess water to the bladder."),
             new Defense("Reproductive organs", false, 1000, new List<Upgrade>{
-                new Upgrade("Heal the organs", new List<int> { 150}, 0, "Use IP to heal component")
+                new Upgrade("Heal the reproductive organs", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "The reproductive organs are not part of the immune system. They differ between males and females and produce sex cells for reproduction."),
         };
 
