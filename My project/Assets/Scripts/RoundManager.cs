@@ -161,10 +161,27 @@ public class RoundManager : MonoBehaviour
         }
     }
 
+    int CalcHealAmount()
+    {
+        //75
+        int heal = 75;
+
+        return heal;
+
+    }
+
+    int CalcDamageAmount()
+    {
+        //40-80
+        int dmg = Random.Range(40, 80);
+
+        return dmg;
+    }
+
     void HealDefenses(GameObject btn)
     {
         Destroy(btn.gameObject);
-        int healAmount = 75;
+        int healAmount = CalcHealAmount();
         for (int x = 0; x < CurrentPathogen.ComponentDamages.Count; x++)
         {
             var cDamage = CurrentPathogen.ComponentDamages.ElementAt(x);
@@ -178,7 +195,7 @@ public class RoundManager : MonoBehaviour
     void DamagePathogen(GameObject btn)
     {
         Destroy(btn.gameObject);
-        CurrentPathogen.PathogenHealth = Mathf.Max(0, CurrentPathogen.PathogenHealth - Random.Range(40, 80));
+        CurrentPathogen.PathogenHealth = Mathf.Max(0, CurrentPathogen.PathogenHealth-CalcDamageAmount());
         Immunopoints++;
     }
 
