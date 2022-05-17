@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0970bda6f9735064f90659fea75e16c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeName: Strenghten cilia
+  upgradeName: Strengthen cilia
   upgradeReqs:
   - More mucus
   unlocked: 0

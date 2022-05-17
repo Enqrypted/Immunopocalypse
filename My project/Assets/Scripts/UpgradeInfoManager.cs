@@ -77,6 +77,13 @@ public class UpgradeInfoManager : MonoBehaviour
             if ((targUpgrade.LevelPrices.Count > 1) && (targUpgrade.UpgradeLevel == 1))
             {
                 //BUY LVL 2
+                if (targUpgrade.LevelPrices[0] <= roundManager.Immunopoints)
+                {
+                    roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
+                    targUpgrade.UpgradeLevel = 2;
+                    DisplayUpgrade();
+
+                }
             }
         }
     }
@@ -121,7 +128,7 @@ public class UpgradeInfoManager : MonoBehaviour
             }
             else
             {
-                lvl1UI[2].SetActive(true);
+                lvl1UI[2].SetActive(false);
                 lvl2UI[2].SetActive(false);
             }
 

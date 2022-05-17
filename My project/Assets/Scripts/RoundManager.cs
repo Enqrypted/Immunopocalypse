@@ -13,6 +13,8 @@ public class RoundManager : MonoBehaviour
     public Pathogen CurrentPathogen;
     public List<Pathogen> Stage1Pathogens;
     public List<Pathogen> Stage2Pathogens;
+    public List<Pathogen> Stage3Pathogens;
+    public List<Pathogen> Stage4Pathogens;
     public bool isIntermission = true;
 
     public List<Defense> InternalDefense;
@@ -22,17 +24,31 @@ public class RoundManager : MonoBehaviour
     public UIManager uim;
     public Transform bodyAreas;
 
+    public UpgradesFunctionality upgradesFunctionality;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        upgradesFunctionality = new UpgradesFunctionality();
 
         //TODO
         //FINISH ALL PATHOGENS
         Stage1Pathogens = new List<Pathogen> {
             new Pathogen(1000, "Athletes foot", new Dictionary<string, int>{ { "Skin",  30} }, "Fungi", "This fungus casues a skin infection turning the skin red in the feet and between the toes. It is transmitted by close contact with infected person or area.", 50, 50),
+            new Pathogen(1000, "Common cold", new Dictionary<string, int>{ { "Nose",  10}, { "Eyes",  10}, { "Tonsils",  10}, { "Lungs",  10} }, "Virus", "Many types of viruses can cause the common cold. They all affect the upper respiratory passage (nose and tonsils).", 50, 50),
+            new Pathogen(1000, "Cowpox", new Dictionary<string, int>{ { "Skin",  30}, { "Blood",  10} }, "Virus", "Cowpox is caused by a virus which attacks the skin forming red blisters all over the body. It also causes headache and fatigue.", 50, 50),
+            
         };
 
         Stage2Pathogens = new List<Pathogen> {
+            new Pathogen(1000, "Cold sores", new Dictionary<string, int>{ { "Skin",  10}, { "Mouth",  30} }, "Virus", "This virus causes the formation of small, red, fluid-filled blisters on the lips and mouth area.", 50, 50),
+        };
+        
+        Stage3Pathogens = new List<Pathogen> {
+        };
+
+        Stage4Pathogens = new List<Pathogen> {
         };
 
         //TODO
@@ -51,7 +67,7 @@ public class RoundManager : MonoBehaviour
             }, new List<Upgrade>{ }, "Tonsils help trap microbes that enter through the mouth and nose. They have specialised cells that produce antibodies to destroy microbes."),
             new Defense("Trachea & Lungs", false, 1000, new List<Upgrade>{
                 new Upgrade("More mucus", new List<int> { 300, 150}, 0, "Mucus layer traps microbes preventing them from reaching the lungs."),
-                new Upgrade("Strenghten cilia", new List<int> { 300, 150}, 0, "Tiny hair-like projections in tracheal cells beat over 1000 times a minute to push out mucus with any trapped microbes and dirt."),
+                new Upgrade("Strengthen cilia", new List<int> { 300, 150}, 0, "Tiny hair-like projections in tracheal cells beat over 1000 times a minute to push out mucus with any trapped microbes and dirt."),
                 new Upgrade("Produce phagocytes", new List<int> { 300, 150}, 0, "White blood cells that travel in the blood of the alveoli and engulf any microbes they come accross."),
                 new Upgrade("Activate antibodies", new List<int> { 300, 150}, 0, "Proteins called antibodies are produced by white blood cells in the lungs to destroy microbes."),
                 new Upgrade("Bacterial antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to target and destroy bacteria better."),
@@ -100,7 +116,7 @@ public class RoundManager : MonoBehaviour
                 new Upgrade("Heal the kidneys & bladder", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "The kidneys and bladder are not a part of the immune system. Kidneys filter blood to remove waste and transport it and excess water to the bladder."),
             new Defense("Reproductive organs", false, 1000, new List<Upgrade>{
-                new Upgrade("Heal the reproductive organs", new List<int> { 150}, 0, "Use IP to heal component")
+                new Upgrade("Heal the reproductive moorgans", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "The reproductive organs are not part of the immune system. They differ between males and females and produce sex cells for reproduction."),
         };
 
@@ -137,6 +153,33 @@ public class RoundManager : MonoBehaviour
 
         };
 
+        foreach(Defense d in ExternalDefense)
+        {
+            foreach(Upgrade upg in d.Upgrades)
+            {
+                if ((upgradesFunctionality.DamageToDefense_Upgrades.ContainsKey(upg.UpgradeName) == false) && (upgradesFunctionality.DamagePathogen_Upgrades.ContainsKey(upg.UpgradeName) == false) && (upgradesFunctionality.HealDefense_Upgrades.ContainsKey(upg.UpgradeName) == false)) {
+
+                    if (upg.UpgradeName.Contains("Heal") == false)
+                    {
+                        print("UPGRADE: " + upg.UpgradeName + " HAS NO FUNCTIONALITY");
+                    }
+
+                }
+            }
+        }
+
+        foreach (Defense d in InternalDefense)
+        {
+            foreach (Upgrade upg in d.Upgrades)
+            {
+                if ((upgradesFunctionality.DamageToDefense_Upgrades.ContainsKey(upg.UpgradeName) == false) && (upgradesFunctionality.DamagePathogen_Upgrades.ContainsKey(upg.UpgradeName) == false) && (upgradesFunctionality.HealDefense_Upgrades.ContainsKey(upg.UpgradeName) == false))
+                {
+                    if (upg.UpgradeName.Contains("Heal") == false) {
+                        print("UPGRADE: " + upg.UpgradeName + " HAS NO FUNCTIONALITY");
+                    }
+                }
+            }
+        }
 
         //START THE GAME
         StartCoroutine(NewWave(ChooseRandomPathogen(1)));
@@ -161,10 +204,16 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    int CalcHealAmount()
+    int CalcHealAmount(Defense currDefense)
     {
         //75
         int heal = 75;
+
+        foreach (Upgrade unlockedUpg in currDefense.UnlockedUpgrades)
+        {
+            heal = upgradesFunctionality.ProcessHealDefenseUpgrades(heal, unlockedUpg.UpgradeName, unlockedUpg.UpgradeLevel);
+        }
+
 
         return heal;
 
@@ -175,17 +224,33 @@ public class RoundManager : MonoBehaviour
         //40-80
         int dmg = Random.Range(40, 80);
 
+        foreach (Defense d in ExternalDefense) {
+            foreach (Upgrade unlockedUpg in d.UnlockedUpgrades) {
+                dmg = upgradesFunctionality.ProcessDamagePathogenUpgrades(dmg, unlockedUpg.UpgradeName, unlockedUpg.UpgradeLevel);
+            }
+        }
+
         return dmg;
+    }
+
+    int CalcPathogenDamageDefense(int startDmg, Defense damagingDefense) {
+
+        foreach (Upgrade unlockedUpg in damagingDefense.UnlockedUpgrades) {
+            startDmg = upgradesFunctionality.ProcessDamageDefenseUpgrades(startDmg, unlockedUpg.UpgradeName, unlockedUpg.UpgradeLevel);
+        }
+
+        return startDmg;
     }
 
     void HealDefenses(GameObject btn)
     {
         Destroy(btn.gameObject);
-        int healAmount = CalcHealAmount();
+        
         for (int x = 0; x < CurrentPathogen.ComponentDamages.Count; x++)
         {
             var cDamage = CurrentPathogen.ComponentDamages.ElementAt(x);
             Defense foundDefense = GetDefenseByName(cDamage.Key);
+            int healAmount = CalcHealAmount(foundDefense);
             foundDefense.Health = Mathf.Min(foundDefense.MaxHealth, foundDefense.Health+healAmount);
         }
 
@@ -205,7 +270,7 @@ public class RoundManager : MonoBehaviour
         Destroy(obj);
     }
 
-    IEnumerator NewWave(Pathogen ChosenPathogen, int waveLength = 300) {
+    IEnumerator NewWave(Pathogen ChosenPathogen, int waveLength = 60) {
 
         foreach (Defense d in InternalDefense) {
             d.IsUnderAttack = false;
@@ -233,7 +298,7 @@ public class RoundManager : MonoBehaviour
                 for (int x = 0; x < CurrentPathogen.ComponentDamages.Count; x++) {
                     var cDamage = CurrentPathogen.ComponentDamages.ElementAt(x);
                     Defense foundDefense = GetDefenseByName(cDamage.Key);
-                    foundDefense.Health = Mathf.Max(0, foundDefense.Health - cDamage.Value);
+                    foundDefense.Health = Mathf.Max(0, foundDefense.Health - CalcPathogenDamageDefense(cDamage.Value, foundDefense));
                     foundDefense.IsUnderAttack = true;
 
 
@@ -288,7 +353,7 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(15);
 
         //TODO CHANGE PATHOGEN STAGE DEPENDNG ON WAVE
-        StartCoroutine(NewWave(ChooseRandomPathogen(1)));
+        StartCoroutine(NewWave(ChooseRandomPathogen(Mathf.CeilToInt(CurrentWave/5f))));
 
     }
 
