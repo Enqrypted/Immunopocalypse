@@ -21,6 +21,7 @@ public class UpgradeInfoManager : MonoBehaviour
     {
         targDefense = GameObject.Find("GameManager").GetComponent<RoundManager>().GetDefenseByName(transform.parent.name.Replace("Upgrades", ""));
         targUpgrade = FindUpgrade(upgradeName, targDefense.Upgrades);
+
         GetComponent<Button>().onClick.AddListener(DisplayUpgrade);
 
         roundManager = GameObject.Find("GameManager").GetComponent<RoundManager>();
@@ -34,8 +35,13 @@ public class UpgradeInfoManager : MonoBehaviour
         lvl1UI.Add(infoPanel.transform.Find("Lvl1Desc").gameObject);
         lvl1UI.Add(infoPanel.transform.Find("Lvl1Buy").gameObject);
 
+        lvl2UI[1].SetActive(false);
+        lvl1UI[1].SetActive(false);
+
         infoPanel.transform.Find("Lvl1Buy").gameObject.GetComponent<Button>().onClick.AddListener(BuyLvl1);
         infoPanel.transform.Find("Lvl2Buy").gameObject.GetComponent<Button>().onClick.AddListener(BuyLvl2);
+
+
     }
 
     RoundManager.Upgrade FindUpgrade(string findWithName, List<RoundManager.Upgrade> upgradeList)
@@ -60,10 +66,25 @@ public class UpgradeInfoManager : MonoBehaviour
                 //BUY LVL 1
                 if(targUpgrade.LevelPrices[0] <= roundManager.Immunopoints)
                 {
-                    roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
-                    targDefense.UnlockedUpgrades.Add(targUpgrade);
-                    targUpgrade.UpgradeLevel = 1;
-                    DisplayUpgrade();
+
+                    ((GameObject)Instantiate(Resources.Load("UpgradeAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f, 1.25f);
+
+                    if (targUpgrade.UpgradeName.ToLower().Contains("heal"))
+                    {
+
+                        roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
+                        targDefense.Health = Mathf.Min(targDefense.Health + 200, targDefense.MaxHealth);
+
+                    }
+                    else {
+
+                        roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
+                        targDefense.UnlockedUpgrades.Add(targUpgrade);
+                        targUpgrade.UpgradeLevel = 1;
+                        DisplayUpgrade();
+                        gameObject.GetComponent<Image>().color = new Color(.5f, 1f, 1f);
+
+                    }
 
                 }
             }
@@ -79,6 +100,9 @@ public class UpgradeInfoManager : MonoBehaviour
                 //BUY LVL 2
                 if (targUpgrade.LevelPrices[0] <= roundManager.Immunopoints)
                 {
+
+                    ((GameObject)Instantiate(Resources.Load("UpgradeAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f, 1.25f);
+
                     roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
                     targUpgrade.UpgradeLevel = 2;
                     DisplayUpgrade();
@@ -101,10 +125,8 @@ public class UpgradeInfoManager : MonoBehaviour
 
             if (targUpgrade.LevelPrices.Count > 1)
             {
-                foreach(GameObject obj in lvl2UI)
-                {
-                    obj.SetActive(true);
-                }
+                lvl2UI[0].SetActive(true);
+                lvl2UI[2].SetActive(true);
 
                 infoPanel.transform.Find("Lvl2Buy").Find("text").GetComponent<TextMeshProUGUI>().text = "Buy - " + targUpgrade.LevelPrices[1].ToString();
 
@@ -161,7 +183,11 @@ public class UpgradeInfoManager : MonoBehaviour
         {
             foreach (Image img in GetComponentsInChildren<Image>())
             {
-                img.color = Color.white;
+                if (targUpgrade.UpgradeLevel == 0)
+                {
+                    img.color = Color.white;
+                }
+                
             }
         }
         else

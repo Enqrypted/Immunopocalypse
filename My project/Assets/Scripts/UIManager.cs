@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static RoundManager;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     public Transform internalDefense;
     public Transform externalDefense;
     public Transform[] defenseButtons;
+    public GameObject changeDefenseWarning;
 
     private int lastImmunopoints;
     public RoundManager roundManager;
@@ -116,8 +118,49 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Update points
-        if (lastImmunopoints != roundManager.Immunopoints){
+
+        //check internal/external defense attack
+        if (btnText.text == "Go to external")
+        {
+
+            bool warn = false;
+
+            //check external components
+            foreach(Defense d in roundManager.ExternalDefense)
+            {
+                if (d.IsUnderAttack)
+                {
+
+                    warn = true;
+
+                }
+            }
+
+            changeDefenseWarning.SetActive(warn);
+
+        }
+        else
+        {
+
+            bool warn = false;
+
+            //check internal components
+            foreach (Defense d in roundManager.InternalDefense)
+            {
+                if (d.IsUnderAttack)
+                {
+
+                    warn = true;
+
+                }
+            }
+
+            changeDefenseWarning.SetActive(warn);
+
+        }
+
+            //Update points
+            if (lastImmunopoints != roundManager.Immunopoints){
             lastImmunopoints = roundManager.Immunopoints;
             immunopointsText.text = lastImmunopoints.ToString();
         }
@@ -154,11 +197,18 @@ public class UIManager : MonoBehaviour
         //Add warning signs to parts under attack
         foreach(Transform t in internalDefense.transform)
         {
+
+            if (GetDefense(t.name) != null)
+            {
+                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ( (float) GetDefense(t.name).Health / (float) GetDefense(t.name).MaxHealth));
+            }
+
             if (GetDefense(t.name) != null && GetDefense(t.name).IsUnderAttack)
             {
-                if (t.Find("warning") == null)
+                if ((t.Find("warning") == null) && internalDefense.gameObject.activeSelf==true)
                 {
                     GameObject warning = (GameObject)Instantiate(Resources.Load("warning"), t);
+                    warning.name = "warning";
                     warning.transform.localPosition = new Vector3(26, 26);
                 }
             }
@@ -173,9 +223,15 @@ public class UIManager : MonoBehaviour
 
         foreach (Transform t in externalDefense.transform)
         {
+
+            if (GetDefense(t.name) != null)
+            {
+                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ( (float) GetDefense(t.name).Health / (float) GetDefense(t.name).MaxHealth));
+            }
+
             if (GetDefense(t.name) != null && GetDefense(t.name).IsUnderAttack)
             {
-                if (t.Find("warning") == null)
+                if ((t.Find("warning") == null) && externalDefense.gameObject.activeSelf==true)
                 {
                     GameObject warning = (GameObject)Instantiate(Resources.Load("warning"), t);
                     warning.name = "warning";

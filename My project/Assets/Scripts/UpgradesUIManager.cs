@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static RoundManager;
 
 public class UpgradesUIManager : MonoBehaviour
 {
 
     public GameObject UpgradesPanel;
     public UIManager UIManager;
+    public RoundManager roundManager;
     public List<GameObject> UpgradePanels = new List<GameObject>();
     public Button upgradeButton, backToGame;
 
@@ -75,6 +77,10 @@ public class UpgradesUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (UpgradesPanel.activeSelf) {
+            Defense currentDefense = roundManager.GetDefenseByName(UIManager.selectedDefense);
+            UpgradesPanel.transform.Find("dt").GetComponent<TextMeshProUGUI>().text = currentDefense.DefenseName;
+            UpgradesPanel.transform.Find("dHealth").Find("Bar").transform.localScale = new Vector3((float)currentDefense.Health/(float)currentDefense.MaxHealth, 1f, 1f);
+        }
     }
 }

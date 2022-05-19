@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
+using System;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
 
     public int Immunopoints = 20;
     public int CurrentWave = 0;
+    public int pointsIncrease = 5;
     public float EndAt;
     public Pathogen CurrentPathogen;
     public List<Pathogen> Stage1Pathogens;
@@ -16,6 +21,8 @@ public class RoundManager : MonoBehaviour
     public List<Pathogen> Stage3Pathogens;
     public List<Pathogen> Stage4Pathogens;
     public bool isIntermission = true;
+    public GameObject tipsPanel;
+    public TextMeshProUGUI tipsText;
 
     public List<Defense> InternalDefense;
     public List<Defense> ExternalDefense;
@@ -23,8 +30,51 @@ public class RoundManager : MonoBehaviour
 
     public UIManager uim;
     public Transform bodyAreas;
+    public Transform effectCanvas;
+
+    bool showedUpgradeTip = false;
 
     public UpgradesFunctionality upgradesFunctionality;
+
+    String FindComponentFromString(string str) {
+        string comp = "";
+
+        foreach (Defense d in InternalDefense) {
+            if (d.DefenseName.ToLower().Trim() == str.ToLower().Trim()) {
+                comp = d.DefenseName;
+            }
+        }
+
+        foreach (Defense d in ExternalDefense)
+        {
+            if (d.DefenseName.ToLower().Trim() == str.ToLower().Trim())
+            {
+                comp = d.DefenseName;
+            }
+        }
+
+        if (comp == "") {
+            print("COULD NOT FIND COMPONENT " + str);
+        }
+
+        return comp;
+    }
+
+    void ShowTip(string msg) {
+        tipsText.text = msg;
+        tipsPanel.SetActive(true);
+    }
+
+    Pathogen getPathogenFromPathogenData(PathogenData pData) {
+
+        Dictionary<string, int> damageComponents = new Dictionary<string, int> {};
+
+        foreach (string dmgData in pData.componentDamages) {
+            damageComponents.Add(FindComponentFromString(Regex.Replace(dmgData, @"[\d-]", string.Empty)), Int32.Parse(Regex.Replace(dmgData, "[^0-9]", "")));
+        }
+
+        return new Pathogen(pData.health, pData.gameObject.name, damageComponents, pData.VirusType.ToString(), pData.desc, pData.yellowDamage, pData.greenHealth);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +86,9 @@ public class RoundManager : MonoBehaviour
         //FINISH ALL PATHOGENS
         Stage1Pathogens = new List<Pathogen> {
             new Pathogen(1000, "Athletes foot", new Dictionary<string, int>{ { "Skin",  30} }, "Fungi", "This fungus casues a skin infection turning the skin red in the feet and between the toes. It is transmitted by close contact with infected person or area.", 50, 50),
-            new Pathogen(1000, "Common cold", new Dictionary<string, int>{ { "Nose",  10}, { "Eyes",  10}, { "Tonsils",  10}, { "Lungs",  10} }, "Virus", "Many types of viruses can cause the common cold. They all affect the upper respiratory passage (nose and tonsils).", 50, 50),
+            new Pathogen(1000, "Common cold", new Dictionary<string, int>{ { "Nose",  10}, { "Eye",  10}, { "Tonsils",  10}, { "Trachea & Lungs",  10} }, "Virus", "Many types of viruses can cause the common cold. They all affect the upper respiratory passage (nose and tonsils).", 50, 50),
             new Pathogen(1000, "Cowpox", new Dictionary<string, int>{ { "Skin",  30}, { "Blood",  10} }, "Virus", "Cowpox is caused by a virus which attacks the skin forming red blisters all over the body. It also causes headache and fatigue.", 50, 50),
+            new Pathogen(1000, "Nail fungus", new Dictionary<string, int>{ { "Skin",  40} }, "Fungi", "This fungus attacks nails (most commonly toenails) and turns them brittle, thick and yellowish-white in colour.", 50, 50),
             
         };
 
@@ -50,6 +101,8 @@ public class RoundManager : MonoBehaviour
 
         Stage4Pathogens = new List<Pathogen> {
         };
+
+        
 
         //TODO
         //FINISH ALL DEFENSE COMPONENTS AND THEIR UPGRADES
@@ -83,7 +136,7 @@ public class RoundManager : MonoBehaviour
                 new Upgrade("Bacterial antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to target and destroy bacteria better."),
                 new Upgrade("Fungal antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to target and destroy fungi better."),
                 new Upgrade("Viral antibodies", new List<int> { 300, 150}, 0, "Antibodies are able to taget and destroy viruses better."),
-                new Upgrade("Heal the stomach and gut", new List<int> { 150}, 0, "Use IP to heal component")
+                new Upgrade("Heal the stomach & gut", new List<int> { 150}, 0, "Use IP to heal component")
             }, new List<Upgrade>{ }, "The stomach produces strong acids that destroy microbes. White blood cells in the gut (intestines) also produce antibodies that fight off microbes."),
             new Defense("Bone marrow", false, 1000, new List<Upgrade>{
                 new Upgrade("Increase red blood cells", new List<int> { 300, 150}, 0, "Boost the production of red blood cells to transport oxygen to body cells."),
@@ -181,26 +234,55 @@ public class RoundManager : MonoBehaviour
             }
         }
 
+
+        //AUTO ADD PATHOGENS
+        foreach (Transform t in GameObject.Find("Stage1").transform)
+        {
+            if (t.gameObject.activeSelf)
+            {
+                Stage1Pathogens.Add(getPathogenFromPathogenData(t.GetComponent<PathogenData>()));
+            }
+            
+        }
+
+        foreach (Transform t in GameObject.Find("Stage2").transform)
+        {
+            Stage2Pathogens.Add(getPathogenFromPathogenData(t.GetComponent<PathogenData>()));
+        }
+
+        foreach (Transform t in GameObject.Find("Stage3").transform)
+        {
+            Stage3Pathogens.Add(getPathogenFromPathogenData(t.GetComponent<PathogenData>()));
+        }
+
+        foreach (Transform t in GameObject.Find("Stage4").transform)
+        {
+            Stage4Pathogens.Add(getPathogenFromPathogenData(t.GetComponent<PathogenData>()));
+        }
+
         //START THE GAME
-        StartCoroutine(NewWave(ChooseRandomPathogen(1)));
+
+        ShowTip("Body parts with an <color=#ff0000ff><b> ! </b></color> are being attacked by a pathogen!");
+
+        StartCoroutine(NewWave(ChooseRandomPathogen(Mathf.CeilToInt((float)(CurrentWave+1) / 5f))));
 
     }
 
     Pathogen ChooseRandomPathogen(int pathogenStage) {
         if (pathogenStage == 1)
         {
-            return Stage1Pathogens[Random.Range(0, Stage1Pathogens.Count - 1)];
+            return Stage1Pathogens[UnityEngine.Random.Range(0, Stage1Pathogens.Count - 1)];
         }
         else if (pathogenStage == 2)
         {
-            return Stage2Pathogens[Random.Range(0, Stage2Pathogens.Count - 1)];
+            return Stage2Pathogens[UnityEngine.Random.Range(0, Stage2Pathogens.Count - 1)];
         }
         else if (pathogenStage == 3)
         {
-            return Stage2Pathogens[Random.Range(0, Stage2Pathogens.Count - 1)];
+            return Stage3Pathogens[UnityEngine.Random.Range(0, Stage3Pathogens.Count - 1)];
         }
         else {
-            return Stage2Pathogens[Random.Range(0, Stage2Pathogens.Count - 1)];
+            return Stage4Pathogens[UnityEngine.Random.Range(0, Stage4Pathogens.Count - 1)];
         }
     }
 
@@ -222,7 +304,7 @@ public class RoundManager : MonoBehaviour
     int CalcDamageAmount()
     {
         //40-80
-        int dmg = Random.Range(40, 80);
+        int dmg = UnityEngine.Random.Range(40, 80);
 
         foreach (Defense d in ExternalDefense) {
             foreach (Upgrade unlockedUpg in d.UnlockedUpgrades) {
@@ -244,24 +326,63 @@ public class RoundManager : MonoBehaviour
 
     void HealDefenses(GameObject btn)
     {
+        Vector3 pos = btn.transform.position;
         Destroy(btn.gameObject);
-        
+
+        int healAmount= 0;
+
         for (int x = 0; x < CurrentPathogen.ComponentDamages.Count; x++)
         {
             var cDamage = CurrentPathogen.ComponentDamages.ElementAt(x);
             Defense foundDefense = GetDefenseByName(cDamage.Key);
-            int healAmount = CalcHealAmount(foundDefense);
+
+            healAmount = CalcHealAmount(foundDefense);
             foundDefense.Health = Mathf.Min(foundDefense.MaxHealth, foundDefense.Health+healAmount);
+            
+
         }
 
-        Immunopoints++;
+        ((GameObject)Instantiate(Resources.Load("BubblesAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f,1.25f);
+
+        GameObject particles = (GameObject)Instantiate(Resources.Load("HealParticles"));
+        particles.transform.SetParent(effectCanvas);
+        particles.transform.position = pos;
+        particles.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        GameObject info = (GameObject)Instantiate(Resources.Load("HealComponent"));
+        info.transform.SetParent(effectCanvas);
+        info.transform.position = pos;
+        info.transform.localScale = new Vector3(4f, 4f, 4f);
+        info.transform.Find("txt").GetComponent<TextMeshProUGUI>().text = "+" + healAmount.ToString();
+
+        Immunopoints+=pointsIncrease;
     }
 
     void DamagePathogen(GameObject btn)
     {
+
+
+
+        Vector3 pos = btn.transform.position;
+
         Destroy(btn.gameObject);
-        CurrentPathogen.PathogenHealth = Mathf.Max(0, CurrentPathogen.PathogenHealth-CalcDamageAmount());
-        Immunopoints++;
+        int dmg = CalcDamageAmount();
+        CurrentPathogen.PathogenHealth = Mathf.Max(0, CurrentPathogen.PathogenHealth-dmg);
+
+        ((GameObject)Instantiate(Resources.Load("BubblesAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f, 1.25f);
+
+        GameObject particles = (GameObject)Instantiate(Resources.Load("DmgParticles"));
+        particles.transform.SetParent(effectCanvas);
+        particles.transform.position = pos;
+        particles.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        GameObject info = (GameObject)Instantiate(Resources.Load("DamagePathogen"));
+        info.transform.SetParent(effectCanvas);
+        info.transform.position = pos;
+        info.transform.localScale = new Vector3(4f, 4f, 4f);
+        info.transform.Find("txt").GetComponent<TextMeshProUGUI>().text = "-" + dmg.ToString();
+
+        Immunopoints += pointsIncrease;
     }
 
     IEnumerator DestroyAfter(GameObject obj, float destroyTime)
@@ -301,31 +422,38 @@ public class RoundManager : MonoBehaviour
                     foundDefense.Health = Mathf.Max(0, foundDefense.Health - CalcPathogenDamageDefense(cDamage.Value, foundDefense));
                     foundDefense.IsUnderAttack = true;
 
-
-                    //SPAWN BUBBLES
-                    float Chance = Random.Range(0.0f, 1.0f);
-                    if (Chance < .3f)
-                    {
-                        //dont spawn
-                    }else if (Chance < .63f)
-                    {
-                        //spawn green bubble
-                        GameObject bubble = (GameObject)Instantiate(Resources.Load("GreenHP"), bodyAreas.Find("Bottom"));
-                        bubble.name = "greenBubble";
-                        StartCoroutine(DestroyAfter(bubble, 3f));
-                        bubble.GetComponent<Button>().onClick.AddListener(delegate { HealDefenses(bubble); });
-
+                    if (foundDefense.Health <= 0) {
+                        SceneManager.LoadScene("GameOver");
                     }
-                    else
-                    {
-                        //spawn yellow bubble
-                        GameObject bubble = (GameObject)Instantiate(Resources.Load("YellowHP"), bodyAreas.Find("Bottom"));
-                        bubble.name = "yellowBubble";
-                        StartCoroutine(DestroyAfter(bubble, 1.5f));
-                        bubble.GetComponent<Button>().onClick.AddListener(delegate { DamagePathogen(bubble); });
-                    }
+
+
+                    
 
                     //print(foundDefense.DefenseName + ": " + foundDefense.Health);
+                }
+
+                //SPAWN BUBBLES
+                float Chance = UnityEngine.Random.Range(0.0f, 1.0f);
+                if (Chance < .3f)
+                {
+                    //dont spawn
+                }
+                else if (Chance < .63f)
+                {
+                    //spawn green bubble
+                    GameObject bubble = (GameObject)Instantiate(Resources.Load("GreenHP"), bodyAreas.Find("Bottom"));
+                    bubble.name = "greenBubble";
+                    StartCoroutine(DestroyAfter(bubble, 3f));
+                    bubble.GetComponent<Button>().onClick.AddListener(delegate { HealDefenses(bubble); });
+
+                }
+                else
+                {
+                    //spawn yellow bubble
+                    GameObject bubble = (GameObject)Instantiate(Resources.Load("YellowHP"), bodyAreas.Find("Bottom"));
+                    bubble.name = "yellowBubble";
+                    StartCoroutine(DestroyAfter(bubble, 1.5f));
+                    bubble.GetComponent<Button>().onClick.AddListener(delegate { DamagePathogen(bubble); });
                 }
 
                 if (CurrentPathogen.PathogenHealth <= 0) {
@@ -348,25 +476,32 @@ public class RoundManager : MonoBehaviour
             d.IsUnderAttack = false;
         }
 
+        if (showedUpgradeTip == false)
+        {
+            showedUpgradeTip = true;
+            ShowTip("Upgrade your body parts to make them stronger!");
+        }
+
         isIntermission = true;
-        EndAt = Time.time + 15;
-        yield return new WaitForSeconds(15);
+        EndAt = Time.time + 25;
+        yield return new WaitForSeconds(25);
 
         //TODO CHANGE PATHOGEN STAGE DEPENDNG ON WAVE
-        StartCoroutine(NewWave(ChooseRandomPathogen(Mathf.CeilToInt(CurrentWave/5f))));
+        StartCoroutine(NewWave(ChooseRandomPathogen(Mathf.CeilToInt((float)(CurrentWave + 1) / 5f))));
 
     }
 
     public Defense GetDefenseByName(string DefenseName) {
         foreach (Defense d in InternalDefense) {
-            if (d.DefenseName == DefenseName) {
+            if (d.DefenseName.ToLower().Trim() == DefenseName.ToLower().Trim())
+            {
                 return d;
             }
         }
 
         foreach (Defense d in ExternalDefense)
         {
-            if (d.DefenseName == DefenseName)
+            if (d.DefenseName.ToLower().Trim() == DefenseName.ToLower().Trim())
             {
                 return d;
             }
