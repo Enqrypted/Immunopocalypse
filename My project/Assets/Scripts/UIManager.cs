@@ -57,10 +57,27 @@ public class UIManager : MonoBehaviour
 
         }
 
+        attackPanel.Find("HealButton").GetComponent<Button>().onClick.AddListener(QuickHeal);
+
     }
 
     void SelectDefense(Transform t) {
         selectedDefense = t.parent.name;
+    }
+
+    void QuickHeal()
+    {
+        if (roundManager.Immunopoints >= 100)
+        {
+            roundManager.Immunopoints -= 100;
+            ((GameObject)Instantiate(Resources.Load("UpgradeAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f, 1.25f);
+            Defense healingDefense = roundManager.GetDefenseByName(selectedDefense);
+            healingDefense.Health = Mathf.Min(healingDefense.MaxHealth, healingDefense.Health+200);
+        }
+        else
+        {
+            roundManager.ShowTip("Not enough immunopoints to heal!");
+        }
     }
 
     void ChangeDefense(){
@@ -124,6 +141,7 @@ public class UIManager : MonoBehaviour
         {
 
             bool warn = false;
+            bool warnUrgent = false;
 
             //check external components
             foreach(Defense d in roundManager.ExternalDefense)
@@ -133,16 +151,24 @@ public class UIManager : MonoBehaviour
 
                     warn = true;
 
+                    if (d.Health <= (d.MaxHealth / 2f))
+                    {
+                        warnUrgent = true;
+                    }
+
+
                 }
             }
 
             changeDefenseWarning.SetActive(warn);
+            changeDefenseWarning.GetComponent<WarningFlash>().isFlashing = warnUrgent;
 
         }
         else
         {
 
             bool warn = false;
+            bool warnUrgent = false;
 
             //check internal components
             foreach (Defense d in roundManager.InternalDefense)
@@ -152,10 +178,17 @@ public class UIManager : MonoBehaviour
 
                     warn = true;
 
+                    if (d.Health <= (d.MaxHealth / 2f))
+                    {
+                        warnUrgent = true;
+                    }
+
+
                 }
             }
 
             changeDefenseWarning.SetActive(warn);
+            changeDefenseWarning.GetComponent<WarningFlash>().isFlashing = warnUrgent;
 
         }
 
@@ -168,48 +201,77 @@ public class UIManager : MonoBehaviour
         //Update pathogen stats
         if (roundManager.isIntermission)
         {
-            pathogenPanel.gameObject.SetActive(false);
+            pathogenPanel.transform.Find("attackingUpcoming").GetComponent<TextMeshProUGUI>().text = "Upcoming disease:";
+            pathogenPanel.Find("currentPathogen").GetComponent<TextMeshProUGUI>().text = roundManager.upcomingPathogen.PathogenName;
+            pathogenPanel.Find("pathogenDesc").GetComponent<TextMeshProUGUI>().text = roundManager.upcomingPathogen.PathogenInfo;
         }
         else
         {
-            pathogenPanel.gameObject.SetActive(true);
+            pathogenPanel.transform.Find("attackingUpcoming").GetComponent<TextMeshProUGUI>().text = "Attacking pathogen!";
             pathogenPanel.Find("currentPathogen").GetComponent<TextMeshProUGUI>().text = roundManager.CurrentPathogen.PathogenName;
             pathogenPanel.Find("pathogenDesc").GetComponent<TextMeshProUGUI>().text = roundManager.CurrentPathogen.PathogenInfo;
         }
 
-        //Update round stats
-        if (roundManager.isIntermission)
+        
+
+        if (roundManager.isPaused)
         {
-            waveStatus.text = "NEXT WAVE IN:";
+            waveStatus.text = "GAME PAUSED";
             currentWave.text = "Intermission";
-            TimeSpan t = TimeSpan.FromSeconds(Mathf.Ceil(roundManager.EndAt - Time.time));
-            waveTimer.text = t.ToString(@"mm\:ss");
+            waveTimer.text = "00:00";
         }
-        else {
-            Alert.gameObject.SetActive(true);
-            Alert.Find("text").GetComponent<TextMeshProUGUI>().text = "Quickly tap the green bubbles to heal and the yellow bubbles to damage the pathogen!";
-            waveStatus.text = "WAVE ENDS:";
-            currentWave.text = roundManager.CurrentWave.ToString() + "/20";
-            TimeSpan t = TimeSpan.FromSeconds(Mathf.Ceil(roundManager.EndAt - Time.time));
-            waveTimer.text = t.ToString(@"mm\:ss");
+        else
+        {
+            //Update round stats
+            if (roundManager.isIntermission)
+            {
+                waveStatus.text = "NEXT WAVE IN:";
+                currentWave.text = "Intermission";
+                TimeSpan t = TimeSpan.FromSeconds(Mathf.Ceil(roundManager.EndAt - Time.time));
+                waveTimer.text = t.ToString(@"mm\:ss");
+            }
+            else
+            {
+                
+                waveStatus.text = "WAVE ENDS:";
+                currentWave.text = roundManager.CurrentWave.ToString() + "/20";
+                TimeSpan t = TimeSpan.FromSeconds(Mathf.Ceil(roundManager.EndAt - Time.time));
+
+                if (roundManager.CurrentWave == 1 && t.Seconds > 50f)
+                {
+                    Alert.gameObject.SetActive(true);
+                    Alert.Find("text").GetComponent<TextMeshProUGUI>().text = "Quickly tap the green bubbles to heal and the yellow bubbles to damage the pathogen!";
+                }
+                else
+                {
+                    Alert.gameObject.SetActive(false);
+                }
+
+                waveTimer.text = t.ToString(@"mm\:ss");
+            }
         }
 
         //Add warning signs to parts under attack
         foreach(Transform t in internalDefense.transform)
         {
-
-            if (GetDefense(t.name) != null)
+            Defense checkingDefense = GetDefense(t.name);
+            if (checkingDefense != null)
             {
-                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ( (float) GetDefense(t.name).Health / (float) GetDefense(t.name).MaxHealth));
+                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ( (float)checkingDefense.Health / (float)checkingDefense.MaxHealth));
             }
 
-            if (GetDefense(t.name) != null && GetDefense(t.name).IsUnderAttack)
+            if (checkingDefense != null && checkingDefense.IsUnderAttack)
             {
                 if ((t.Find("warning") == null) && internalDefense.gameObject.activeSelf==true)
                 {
                     GameObject warning = (GameObject)Instantiate(Resources.Load("warning"), t);
                     warning.name = "warning";
                     warning.transform.localPosition = new Vector3(26, 26);
+                }
+
+                if ((t.Find("warning") != null))
+                {
+                    t.Find("warning").GetComponent<WarningFlash>().isFlashing = checkingDefense.Health <= (checkingDefense.MaxHealth/2f);
                 }
             }
             else
@@ -224,18 +286,24 @@ public class UIManager : MonoBehaviour
         foreach (Transform t in externalDefense.transform)
         {
 
-            if (GetDefense(t.name) != null)
+            Defense checkingDefense = GetDefense(t.name);
+            if (checkingDefense != null)
             {
-                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ( (float) GetDefense(t.name).Health / (float) GetDefense(t.name).MaxHealth));
+                t.GetComponent<Image>().color = Color.Lerp(new Color(.5f, 1f, 1f), new Color(1, 0, 0), 1f - ((float)checkingDefense.Health / (float)checkingDefense.MaxHealth));
             }
 
-            if (GetDefense(t.name) != null && GetDefense(t.name).IsUnderAttack)
+            if (checkingDefense != null && checkingDefense.IsUnderAttack)
             {
-                if ((t.Find("warning") == null) && externalDefense.gameObject.activeSelf==true)
+                if ((t.Find("warning") == null) && externalDefense.gameObject.activeSelf == true)
                 {
                     GameObject warning = (GameObject)Instantiate(Resources.Load("warning"), t);
                     warning.name = "warning";
                     warning.transform.localPosition = new Vector3(26, 26);
+                }
+
+                if ((t.Find("warning") != null))
+                {
+                    t.Find("warning").GetComponent<WarningFlash>().isFlashing = checkingDefense.Health <= (checkingDefense.MaxHealth / 2f);
                 }
             }
             else

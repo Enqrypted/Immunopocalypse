@@ -8,7 +8,7 @@ public class ButtonFloat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomPos = new Vector3(Random.Range(0f, 100f) - 50f, Random.Range(0f, 100f) - 50f, 0);
+        randomPos = new Vector3(Random.Range(0f, 200f) - 100f, Random.Range(0f, 100f) - 50f, 0);
     }
 
     // Update is called once per frame

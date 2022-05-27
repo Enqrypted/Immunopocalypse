@@ -33,12 +33,12 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 16
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1102309731}
-  m_IndirectSpecularColor: {r: 0.18290445, g: 0.22615127, b: 0.29267466, a: 1}
+  m_IndirectSpecularColor: {r: 0.4648115, g: 0.51287407, b: 0.577285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 02f6f13f635b15b4d95d632d1bf2bf80, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: e67150db1333b2a49a25e26c5e9e80d1, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   componentDamages:
-  - Trachea & lungs50
+  - Trachea & lungs45
   - Nose10
   - Mouth10
   - Brain10
@@ -464,6 +464,7 @@ MonoBehaviour:
     of smell and taste. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &29685592
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Reinforce enzymes
   upgradeReqs:
-  - Secret saliva
+  - Secrete saliva
   unlocked: 0
   lvl2UI: []
   lvl1UI: []
@@ -883,6 +884,187 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45042257}
   m_CullTransparentMesh: 1
+--- !u!1 &50880761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 50880762}
+  - component: {fileID: 50880763}
+  m_Layer: 0
+  m_Name: Haemophilus influenzae
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &50880762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50880761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &50880763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50880761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain70
+  - Bone marrow20
+  - Lungs & Trachea20
+  VirusType: 2
+  desc: 'This bacteria causes sever headaches, neck and joint pain, fever, fatigue
+    and shortness of breath. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
+--- !u!1 &57573671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57573672}
+  - component: {fileID: 57573673}
+  m_Layer: 0
+  m_Name: Stage1Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57573672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57573671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438201397}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &57573673
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57573671}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 59b079070655fbd4eba46112e9296e5d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &65952829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1345,7 @@ MonoBehaviour:
     fever. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &85677202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1681,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118808448}
   m_CullTransparentMesh: 1
+--- !u!1 &121700255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121700256}
+  - component: {fileID: 121700258}
+  - component: {fileID: 121700257}
+  m_Layer: 5
+  m_Name: UpgradeDesc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &121700256
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121700255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1719725647}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -6.0222015, y: 111.38}
+  m_SizeDelta: {x: 139.6097, y: 38.061}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &121700257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121700255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Green bubble health increase: 20%'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_sharedMaterial: {fileID: -6534255870389121109, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4280549202
+  m_fontColor: {r: 0.32268986, g: 1, b: 0.135849, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+    bottomRight: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 10.55
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 2.9
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &121700258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121700255}
+  m_CullTransparentMesh: 1
 --- !u!1 &125596598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1892,128 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125596598}
+  m_CullTransparentMesh: 1
+--- !u!1 &127762668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127762669}
+  - component: {fileID: 127762672}
+  - component: {fileID: 127762671}
+  - component: {fileID: 127762670}
+  m_Layer: 5
+  m_Name: HealButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &127762669
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127762668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1768881377}
+  - {fileID: 1443633990}
+  m_Father: {fileID: 1195265265}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.53466, y: -62.7}
+  m_SizeDelta: {x: 124.78, y: 38.5133}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &127762670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127762668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 127762671}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &127762671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127762668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.60198754, b: 0.2113207, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 115fdd72843dcd14cb8d0983afecedc4, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 15.81
+--- !u!222 &127762672
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127762668}
   m_CullTransparentMesh: 1
 --- !u!1 &135358115
 GameObject:
@@ -2209,7 +2648,7 @@ GameObject:
   - component: {fileID: 178455957}
   - component: {fileID: 178455956}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2317,12 +2756,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   componentDamages:
-  - Eye80
+  - Eye65
   VirusType: 0
   desc: 'This fungus attacks the cornea of the eye, and can lead to blindness if
     not treated. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &191521264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2816,7 @@ MonoBehaviour:
     tonsils and headache. '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 0
 --- !u!1 &191933918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,6 +3032,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193692856}
   m_CullTransparentMesh: 1
+--- !u!1 &198777415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198777416}
+  - component: {fileID: 198777417}
+  m_Layer: 0
+  m_Name: Tuberculosis (TB)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198777416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198777415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &198777417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198777415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain20
+  - Lungs & trachea60
+  - Stomach & gut20
+  - Blood20
+  VirusType: 2
+  desc: 'This bacteria causes persistent coughing, chest pain when breathing, coughing
+    blood, fatigue, chills and loss of appetite. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 1
 --- !u!1 &202967767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,10 +3253,10 @@ RectTransform:
   m_Father: {fileID: 1668822437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -841.7226, y: -147.5087}
-  m_SizeDelta: {x: 239.6082, y: 76.9403}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 70, y: 162}
+  m_SizeDelta: {x: 239.60822, y: 76.94031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206683994
 MonoBehaviour:
@@ -2993,6 +3489,7 @@ MonoBehaviour:
     the mouth. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 1
 --- !u!1 &223266373
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3502,7 @@ GameObject:
   - component: {fileID: 223266376}
   - component: {fileID: 223266375}
   m_Layer: 5
-  m_Name: Image (13)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3660,7 +4157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: 136.87}
+  m_AnchoredPosition: {x: 183, y: 136.87}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285059966
@@ -4642,7 +5139,7 @@ GameObject:
   - component: {fileID: 344433197}
   - component: {fileID: 344433198}
   m_Layer: 5
-  m_Name: Bottom
+  m_Name: BOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5035,7 +5532,7 @@ GameObject:
   - component: {fileID: 383761556}
   - component: {fileID: 383761555}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5334,7 +5831,7 @@ RectTransform:
   m_GameObject: {fileID: 400520320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_Children: []
   m_Father: {fileID: 928844338}
   m_RootOrder: 2
@@ -5502,6 +5999,60 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &413808582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 413808583}
+  - component: {fileID: 413808584}
+  m_Layer: 0
+  m_Name: Meningitis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413808583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413808582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413808584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413808582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain60
+  - Eye30
+  - Skin40
+  VirusType: 1
+  desc: 'This virus causes severe headaches and confusion, sensitivity to light,
+    fatigue, muscle pain, seizures and red, blotchy spots on the skin. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &416085783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,6 +6768,7 @@ MonoBehaviour:
   pointsIncrease: 5
   EndAt: 0
   isIntermission: 1
+  isPaused: 0
   tipsPanel: {fileID: 1125819647}
   tipsText: {fileID: 690697535}
   uim: {fileID: 1532412073}
@@ -6232,7 +6784,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 449.45987, y: 260.38327, z: -211.24658}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 57573672}
+  - {fileID: 1390998347}
+  - {fileID: 1620105448}
+  - {fileID: 1998846089}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6246,9 +6802,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 59b079070655fbd4eba46112e9296e5d, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_audioClip: {fileID: 8300000, guid: 3c269aecd089c484da861a8cfb1183ee, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6339,6 +6895,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98862815
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.15038092
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000005355105
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000021944288
+      objectReference: {fileID: 0}
+    - target: {fileID: 614240669054843821, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -17.298
+      objectReference: {fileID: 0}
     - target: {fileID: 697085676724543842, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6908,6 +7496,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518741042}
   m_CullTransparentMesh: 1
+--- !u!1 &524889978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524889980}
+  - component: {fileID: 524889979}
+  m_Layer: 0
+  m_Name: GameStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &524889979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524889978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867f7806953e3a741958c0d7c4d505d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavesSurvived: 0
+  pathogenDeath: 
+  componentDeath: 
+--- !u!4 &524889980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524889978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 600.435, y: 234.76195, z: -184.70415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533882150
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,7 +7554,7 @@ GameObject:
   - component: {fileID: 533882153}
   - component: {fileID: 533882152}
   m_Layer: 5
-  m_Name: Image (11)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7946,7 +8580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: -32.00001}
+  m_AnchoredPosition: {x: 182.99998, y: -32.00001}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633287266
@@ -8173,7 +8807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: -120.3}
+  m_AnchoredPosition: {x: 182.99998, y: -120.3}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &678767774
@@ -9078,7 +9712,7 @@ GameObject:
   - component: {fileID: 747970568}
   - component: {fileID: 747970567}
   m_Layer: 5
-  m_Name: Image (10)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9343,6 +9977,7 @@ MonoBehaviour:
     and scaly. '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 1
 --- !u!1 &786153134
 GameObject:
   m_ObjectHideFlags: 0
@@ -9379,7 +10014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: -108.82}
+  m_AnchoredPosition: {x: 193, y: -108.82}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &786153136
@@ -9551,6 +10186,7 @@ MonoBehaviour:
     and fatigue.
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &806839239
 GameObject:
   m_ObjectHideFlags: 0
@@ -9677,6 +10313,7 @@ MonoBehaviour:
   desc: 'This virus attacks the eye causing swelling, redness, itching and irritation. '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 0
 --- !u!1 &822659464
 GameObject:
   m_ObjectHideFlags: 0
@@ -10274,8 +10911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.6101, y: -55.35}
-  m_SizeDelta: {x: 134.3055, y: 52.514}
+  m_AnchoredPosition: {x: 1.3819, y: -84.164}
+  m_SizeDelta: {x: 132.7619, y: 89.354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827965938
 MonoBehaviour:
@@ -10299,8 +10936,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: pathogen description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
-  m_sharedMaterial: {fileID: -6534255870389121109, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10324,11 +10961,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.45
+  m_fontSize: 23.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 2
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 1
@@ -10406,10 +11043,10 @@ RectTransform:
   m_Father: {fileID: 1668822437}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -369.4, y: -131.1}
-  m_SizeDelta: {x: 125.3897, y: 21.7728}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 85.32257, y: 178.4087}
+  m_SizeDelta: {x: 125.38971, y: 21.772797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828968687
 MonoBehaviour:
@@ -10508,6 +11145,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828968685}
   m_CullTransparentMesh: 1
+--- !u!1 &830292144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830292145}
+  - component: {fileID: 830292146}
+  m_Layer: 0
+  m_Name: Dengue Fever
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &830292145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830292144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &830292146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830292144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Bone marrow40
+  - Eye40
+  - Skin20
+  - Stomach & gut20
+  VirusType: 1
+  desc: 'This virus causes bone, joint and eye pain, vomiting and a skin rash. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &834510507
 GameObject:
   m_ObjectHideFlags: 0
@@ -10544,7 +11235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.7, y: -118.7}
+  m_AnchoredPosition: {x: -140.99997, y: -118.7}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834510509
@@ -10647,7 +11338,7 @@ GameObject:
   - component: {fileID: 848201142}
   - component: {fileID: 848201141}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10915,6 +11606,7 @@ MonoBehaviour:
     also affect respiratory passages. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 1
 --- !u!1 &871859912
 GameObject:
   m_ObjectHideFlags: 0
@@ -11419,6 +12111,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877349144}
   m_CullTransparentMesh: 1
+--- !u!1 &880774171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880774172}
+  - component: {fileID: 880774173}
+  m_Layer: 0
+  m_Name: Smallpox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880774172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880774171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880774173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880774171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain20
+  - Bone marrow20
+  - Skin80
+  - Blood40
+  VirusType: 1
+  desc: 'This virus causes headache, fever, backache, fatigue and small blisters
+    filled with pus all over the skin. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 1
 --- !u!1 &883805174
 GameObject:
   m_ObjectHideFlags: 0
@@ -11471,6 +12218,7 @@ MonoBehaviour:
     pain, loss of appetite, constipation and fever. '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 1
 --- !u!1 &885347805
 GameObject:
   m_ObjectHideFlags: 0
@@ -12459,7 +13207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: 52.7}
+  m_AnchoredPosition: {x: 182.99998, y: 52.7}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948277222
@@ -13389,7 +14137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.09995, y: 56.900005}
+  m_AnchoredPosition: {x: 193.00002, y: 56.900005}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022722285
@@ -13777,7 +14525,18 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 652.5834, y: 264.85425, z: -375.82666}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1946948607}
+  - {fileID: 1439263341}
+  - {fileID: 1850460544}
+  - {fileID: 1794786349}
+  - {fileID: 413808583}
+  - {fileID: 1739958830}
+  - {fileID: 1707342022}
+  - {fileID: 880774172}
+  - {fileID: 2025439436}
+  - {fileID: 198777416}
+  - {fileID: 1915002453}
   m_Father: {fileID: 1410059245}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13886,6 +14645,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465836279}
+  - {fileID: 830292145}
+  - {fileID: 1511750243}
+  - {fileID: 50880762}
+  - {fileID: 1721552401}
+  - {fileID: 1243426028}
+  - {fileID: 1551962263}
+  - {fileID: 2008818842}
+  - {fileID: 1482868757}
+  - {fileID: 1645372403}
+  - {fileID: 1407023332}
   m_Father: {fileID: 1410059245}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14108,6 +14877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102309732}
   - component: {fileID: 1102309731}
+  - component: {fileID: 1102309733}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -14137,8 +14907,8 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_Bias: 1
+    m_NormalBias: 1
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
@@ -14184,13 +14954,26 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102309730}
-  m_LocalRotation: {x: 0.10215093, y: -0.15782283, z: 0.8221388, w: 0.53734994}
+  m_LocalRotation: {x: 0.40438026, y: -0.70752, z: 0.40056443, w: 0.41885585}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 21.672, y: -0.102, z: 113.643}
+  m_LocalEulerAnglesHint: {x: 64.9, y: 219.31, z: 326.09}
+--- !u!114 &1102309733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102309730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UsePipelineSettings: 1
 --- !u!1 &1105337924
 GameObject:
   m_ObjectHideFlags: 0
@@ -14318,6 +15101,7 @@ MonoBehaviour:
     and can also infect the bladder (mostly in women). '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 1
 --- !u!1 &1111670565
 GameObject:
   m_ObjectHideFlags: 0
@@ -14330,7 +15114,7 @@ GameObject:
   - component: {fileID: 1111670568}
   - component: {fileID: 1111670567}
   m_Layer: 5
-  m_Name: Image (12)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14445,6 +15229,7 @@ MonoBehaviour:
     causing redness, pain and blurred vision. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &1116049764
 GameObject:
   m_ObjectHideFlags: 0
@@ -15651,6 +16436,7 @@ RectTransform:
   - {fileID: 1286445913}
   - {fileID: 426200759}
   - {fileID: 949803957}
+  - {fileID: 127762669}
   m_Father: {fileID: 166134299}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15709,7 +16495,7 @@ GameObject:
   - component: {fileID: 1207791863}
   - component: {fileID: 1207791862}
   m_Layer: 5
-  m_Name: Image (9)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16003,7 +16789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.70006, y: 142.90001}
+  m_AnchoredPosition: {x: -141.00003, y: 142.90001}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234960632
@@ -16044,6 +16830,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234960630}
   m_CullTransparentMesh: 1
+--- !u!1 &1243426027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243426028}
+  - component: {fileID: 1243426029}
+  m_Layer: 0
+  m_Name: Klebsiella
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243426028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243426027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243426029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243426027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Lungs & trachea50
+  - Kidneys & bladder30
+  - Skin20
+  - Blood20
+  VirusType: 2
+  desc: 'This bacteria normally lives in the intestines and faeces where it is harmless.
+    However, it can infect other organs causing coughing and chest pain, a burning
+    sensation when urinating or a red rash in the skin. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 1
 --- !u!1 &1255632405
 GameObject:
   m_ObjectHideFlags: 0
@@ -16056,7 +16898,7 @@ GameObject:
   - component: {fileID: 1255632408}
   - component: {fileID: 1255632407}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: attackingUpcoming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16078,8 +16920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -13.4928, y: -11.714}
-  m_SizeDelta: {x: 113.8386, y: 12.11}
+  m_AnchoredPosition: {x: -4.6202, y: -14.3058}
+  m_SizeDelta: {x: 131.58, y: 17.2936}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255632407
 MonoBehaviour:
@@ -16128,7 +16970,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.35
+  m_fontSize: 7.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16480,8 +17322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.4267, y: -73.82648}
-  m_SizeDelta: {x: 128.3335, y: 74.6503}
+  m_AnchoredPosition: {x: -1.4267, y: -103.010376}
+  m_SizeDelta: {x: 128.3335, y: 133.0181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286225590
 MonoBehaviour:
@@ -16842,6 +17684,7 @@ MonoBehaviour:
     fever and fatigue. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 1
 --- !u!1 &1307287469
 GameObject:
   m_ObjectHideFlags: 0
@@ -17281,7 +18124,7 @@ GameObject:
   - component: {fileID: 1338469847}
   - component: {fileID: 1338469848}
   m_Layer: 5
-  m_Name: Top
+  m_Name: TOP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17303,8 +18146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 144.41983}
-  m_SizeDelta: {x: 0, y: -341.1492}
+  m_AnchoredPosition: {x: 0, y: 131.86104}
+  m_SizeDelta: {x: 0, y: -358.2292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1338469848
 CanvasRenderer:
@@ -18128,6 +18971,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366103046}
   m_CullTransparentMesh: 1
+--- !u!1 &1390998346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390998347}
+  - component: {fileID: 1390998348}
+  m_Layer: 0
+  m_Name: Stage2Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390998347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390998346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438201397}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1390998348
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390998346}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 04adfc7eb0670dc49b170592ca862ce6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1396386459
 GameObject:
   m_ObjectHideFlags: 0
@@ -18465,6 +19435,7 @@ MonoBehaviour:
     lower belly pain and vaginal discharge. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 1
 --- !u!1 &1402734351
 GameObject:
   m_ObjectHideFlags: 0
@@ -18501,7 +19472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.70001, y: 56.900005}
+  m_AnchoredPosition: {x: -141, y: 56.900005}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402734353
@@ -18542,6 +19513,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402734351}
   m_CullTransparentMesh: 1
+--- !u!1 &1407023331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407023332}
+  - component: {fileID: 1407023333}
+  m_Layer: 0
+  m_Name: Zika
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1407023332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407023331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407023333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407023331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain20
+  - Eye30
+  - Skin30
+  - Bone marrow30
+  VirusType: 1
+  desc: 'This virus causes headache, red eyes, fever, skin rash and joint and muscle
+    pain. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &1407277906
 GameObject:
   m_ObjectHideFlags: 0
@@ -19084,6 +20110,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436589688}
   m_CullTransparentMesh: 1
+--- !u!1 &1439263340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439263341}
+  - component: {fileID: 1439263342}
+  m_Layer: 0
+  m_Name: Bubonic plague
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439263341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439263340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1439263342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439263340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Stomach & gut30
+  - Nose30
+  - Mouth30
+  - Throat30
+  - Skin40
+  VirusType: 2
+  desc: 'This bacteria causes fever, diarrhoea, vomiting, swollen lymp nodes, bleeding
+    from mouth, nose, rectum and under the skin, as well as blackening (death) of
+    fingers and toes. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 1
 --- !u!1 &1440373863
 GameObject:
   m_ObjectHideFlags: 0
@@ -19136,6 +20219,141 @@ MonoBehaviour:
     to the lungs. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 1
+--- !u!1 &1443633989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443633990}
+  - component: {fileID: 1443633992}
+  - component: {fileID: 1443633991}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1443633990
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443633989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 127762669}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.3, y: -6.464903}
+  m_SizeDelta: {x: 104.244, y: 12.9298}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1443633991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443633989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 100 immunopoints
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_sharedMaterial: {fileID: -6534255870389121109, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 7.95
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 2.9
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1443633992
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443633989}
+  m_CullTransparentMesh: 1
 --- !u!1 &1444730756
 GameObject:
   m_ObjectHideFlags: 0
@@ -19309,8 +20527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -4.6202, y: -22.0032}
-  m_SizeDelta: {x: 131.5839, y: 14.1806}
+  m_AnchoredPosition: {x: -1.3237, y: -29.4484}
+  m_SizeDelta: {x: 138.17, y: 20.0773}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447240603
 MonoBehaviour:
@@ -19359,7 +20577,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
+  m_fontSize: 10.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19717,15 +20935,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   componentDamages:
-  - Mouth30
-  - Tonsils10
-  - Reproductive organs30
-  - Skin10
+  - Mouth20
+  - Stomach & gut50
+  - Skin20
+  - Blood20
   VirusType: 2
-  desc: 'This bacteria causes dehydration, dry mouth and skin, diarrhoea, vomiting,
+  desc: 'iarrhoea, vomiting, restlessness and low blood pressure. rrhoea, vomiting,
     restlessness and low blood pressure. '
   yellowDamage: 30
   greenHealth: 30
+  attackArea: 0
+--- !u!1 &1482868756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482868757}
+  - component: {fileID: 1482868758}
+  m_Layer: 0
+  m_Name: SARS-COV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1482868757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482868756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1482868758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482868756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain20
+  - Nose30
+  - Throat30
+  - Lungs & trachea40
+  VirusType: 1
+  desc: 'This virus causes headaches, fever, coughing, runny nose, sore throat and
+    shortness of breath. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &1486799381
 GameObject:
   m_ObjectHideFlags: 0
@@ -20629,6 +21903,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507615653}
   m_CullTransparentMesh: 1
+--- !u!1 &1511750242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511750243}
+  - component: {fileID: 1511750244}
+  m_Layer: 0
+  m_Name: Gonorrhea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1511750243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511750242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1511750244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511750242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Reproductive organs40
+  - Eye20
+  - Throat20
+  - Bone marrow20
+  VirusType: 2
+  desc: 'This bacteria affects the reproductive organs, causing pain when urinating,
+    swelling and white discharge from penis/vagina. It can also cause pain in the
+    eyes, throat and joints. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 1
 --- !u!1 &1515294038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5573287543106016695, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
@@ -20990,6 +22320,7 @@ MonoBehaviour:
     itching and production of white pus in women. '
   yellowDamage: 40
   greenHealth: 40
+  attackArea: 0
 --- !u!1 &1534002518
 GameObject:
   m_ObjectHideFlags: 0
@@ -21177,10 +22508,10 @@ RectTransform:
   m_Father: {fileID: 1668822437}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -359.6873, y: 135.6375}
-  m_SizeDelta: {x: -749.6309, y: -561.9882}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 94.53531, y: 152.14621}
+  m_SizeDelta: {x: 165.36908, y: 24.01178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540833091
 MonoBehaviour:
@@ -21220,6 +22551,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540833089}
   m_CullTransparentMesh: 1
+--- !u!1 &1551962262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551962263}
+  - component: {fileID: 1551962264}
+  m_Layer: 0
+  m_Name: Mumps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551962263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551962262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551962264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551962262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain40
+  - Mouth40
+  - Throat40
+  VirusType: 1
+  desc: 'This virus causes headaches, swollen salivary glands, painful swallowing
+    and fever. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &1553268878
 GameObject:
   m_ObjectHideFlags: 0
@@ -21945,7 +23330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.70001, y: -31.099995}
+  m_AnchoredPosition: {x: -140.99997, y: -31.099995}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613526409
@@ -22261,6 +23646,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618606242}
   m_CullTransparentMesh: 1
+--- !u!1 &1620105447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620105448}
+  - component: {fileID: 1620105449}
+  m_Layer: 0
+  m_Name: Stage3Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620105448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620105447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438201397}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1620105449
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620105447}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5fae54db7af203e4296e46ef4b6f96da, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1626700834
 GameObject:
   m_ObjectHideFlags: 0
@@ -22297,8 +23809,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 21.761963, y: 3.0855103}
-  m_SizeDelta: {x: -768.9238, y: -59.795}
+  m_AnchoredPosition: {x: 25.265081, y: 3.0855103}
+  m_SizeDelta: {x: -709.8712, y: -59.795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1626700836
 CanvasRenderer:
@@ -22424,6 +23936,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632037549}
   m_CullTransparentMesh: 1
+--- !u!1 &1645372402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1645372403}
+  - component: {fileID: 1645372404}
+  m_Layer: 0
+  m_Name: Tetanus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1645372403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645372402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1645372404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645372402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Mouth40
+  - Brain20
+  - Blood40
+  VirusType: 2
+  desc: 'This bacteria causes jaw cramping, muscle stiffening and cramping around
+    the body, headache, fever and changes in blood pressure and heart rate. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &1648197539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4790064125307144131, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
@@ -22977,8 +24543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 189.202, y: -34.856018}
-  m_SizeDelta: {x: 172.797, y: 232.29099}
+  m_AnchoredPosition: {x: 189.202, y: -28.3347}
+  m_SizeDelta: {x: 172.797, y: 275.1828}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1696713433
 MonoBehaviour:
@@ -23228,6 +24794,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703988642}
   m_CullTransparentMesh: 1
+--- !u!1 &1707342021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707342022}
+  - component: {fileID: 1707342023}
+  m_Layer: 0
+  m_Name: Rubella
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707342022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707342021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707342023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707342021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain20
+  - Eye20
+  - Nose30
+  - Lungs & trachea30
+  - Bone marrow20
+  - Skin40
+  VirusType: 1
+  desc: 'This virus causes headache, sneezing, coughing, runny nose, red eyes, muscle
+    and joint pain and a red rash on the skin. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &1712658143
 GameObject:
   m_ObjectHideFlags: 0
@@ -23240,7 +24863,7 @@ GameObject:
   - component: {fileID: 1712658146}
   - component: {fileID: 1712658145}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23341,8 +24964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.40098572, y: 38.116104}
-  m_SizeDelta: {x: -20.341, y: -145.9019}
+  m_AnchoredPosition: {x: 0.40098572, y: 62.14012}
+  m_SizeDelta: {x: -20.341, y: -191.0015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714633113
 MonoBehaviour:
@@ -23420,6 +25043,7 @@ RectTransform:
   - {fileID: 1812371499}
   - {fileID: 1497103099}
   - {fileID: 1825395268}
+  - {fileID: 121700256}
   m_Father: {fileID: 1668822437}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23466,6 +25090,118 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719725646}
   m_CullTransparentMesh: 1
+--- !u!1 &1721552400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721552401}
+  - component: {fileID: 1721552402}
+  m_Layer: 0
+  m_Name: Hepatitis B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721552401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721552400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721552402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721552400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Stomach & gut40
+  - Kidneys & bladder40
+  - Bone marrow20
+  - Skin10
+  - Eye10
+  VirusType: 1
+  desc: 'This virus causes abdominal pain, vomiting, dark urine, joint pain and yellowing
+    of skin and eyes (jaundice). '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 1
+--- !u!1 &1739958829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1739958830}
+  - component: {fileID: 1739958831}
+  m_Layer: 0
+  m_Name: Rabies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1739958830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739958829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1739958831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739958829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain60
+  - Eye30
+  - Throat30
+  - Stomach & gut40
+  VirusType: 1
+  desc: 'This virus causes headaches, fatigue, swollen throat, eye pain, vomiting,
+    diarrhoea and high fever. The infected person shows signs of aggression and fear
+    as well. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &1745691142
 GameObject:
   m_ObjectHideFlags: 0
@@ -23739,6 +25475,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764787338}
   m_CullTransparentMesh: 1
+--- !u!1 &1768881376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768881377}
+  - component: {fileID: 1768881379}
+  - component: {fileID: 1768881378}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1768881377
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768881376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 127762669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.3, y: 7.5045}
+  m_SizeDelta: {x: 106.3232, y: 15.0089}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1768881378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768881376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: quick heal
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_sharedMaterial: {fileID: -6534255870389121109, guid: ebecf44d8ee2ee64c82316d1145189fa, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 12.5
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 2.9
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1768881379
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768881376}
+  m_CullTransparentMesh: 1
 --- !u!1 &1773931534
 GameObject:
   m_ObjectHideFlags: 0
@@ -23971,8 +25841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 87.398476, y: 57.376}
-  m_SizeDelta: {x: 153.654, y: 96.659}
+  m_AnchoredPosition: {x: 87.398476, y: 79.927536}
+  m_SizeDelta: {x: 153.654, y: 141.7621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785019141
 MonoBehaviour:
@@ -24087,6 +25957,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791223146}
   m_CullTransparentMesh: 1
+--- !u!1 &1794786348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794786349}
+  - component: {fileID: 1794786350}
+  m_Layer: 0
+  m_Name: Measles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794786349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794786348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794786350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794786348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Nose20
+  - Mouth40
+  - Throat20
+  - Eye20
+  - Lungs & trachea10
+  - Skin50
+  VirusType: 1
+  desc: 'This virus causes runny nose, sore throat, red eyes, coughing and white
+    spots inside the mouth. This is then followed by red spots all over the skin
+    which turn into blisters. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &1797683795
 GameObject:
   m_ObjectHideFlags: 0
@@ -24123,7 +26051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.70001, y: -31.099995}
+  m_AnchoredPosition: {x: -154, y: -31.099995}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1797683797
@@ -25097,6 +27025,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844455912}
   m_CullTransparentMesh: 1
+--- !u!1 &1850460543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1850460544}
+  - component: {fileID: 1850460545}
+  m_Layer: 0
+  m_Name: Ebola
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1850460544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850460543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1850460545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850460543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain30
+  - Throat20
+  - Stomach & gut40
+  - Bone marrow40
+  - Blood30
+  VirusType: 1
+  desc: 'This virus causes severe headaches, sore throat, joint and muscle pain,
+    vomiting, diarrhoea and unexplainable bleeding and bruising. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &1867978702
 GameObject:
   m_ObjectHideFlags: 0
@@ -25368,6 +27352,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1915002452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1915002453}
+  - component: {fileID: 1915002454}
+  m_Layer: 0
+  m_Name: Yellow fever
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1915002453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915002452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1915002454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915002452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain30
+  - Stomach & gut30
+  - Bone marrow20
+  - Eye20
+  - Skin30
+  - Kidneys & bladder30
+  VirusType: 1
+  desc: 'This virus causes headache and dizziness, vomiting, muscle and joint pain,
+    kidney failure and yellowing (jaundice) of the skin and eyes. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 1
 --- !u!1 &1921614088
 GameObject:
   m_ObjectHideFlags: 0
@@ -25418,6 +27459,7 @@ MonoBehaviour:
   desc: 'This bacteria causes abdominal cramps, diarrhoea, vomiting and fever. '
   yellowDamage: 50
   greenHealth: 50
+  attackArea: 1
 --- !u!1 &1938426074
 GameObject:
   m_ObjectHideFlags: 0
@@ -25538,6 +27580,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942785952}
   m_CullTransparentMesh: 1
+--- !u!1 &1946948606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946948607}
+  - component: {fileID: 1946948608}
+  m_Layer: 0
+  m_Name: AIDS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1946948607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946948606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946948608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946948606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Blood130
+  - Throat30
+  VirusType: 1
+  desc: 'This virus attacks white blood cells that defend the body. Lacking defences,
+    the body is invaded by various microbes causing a wide range of symptoms. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 1
 --- !u!1 &1948041349
 GameObject:
   m_ObjectHideFlags: 0
@@ -26589,7 +28684,7 @@ GameObject:
   - component: {fileID: 1988037333}
   - component: {fileID: 1988037332}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26652,6 +28747,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988037330}
   m_CullTransparentMesh: 1
+--- !u!1 &1998846088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998846089}
+  - component: {fileID: 1998846090}
+  m_Layer: 0
+  m_Name: Stage4Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1998846089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998846088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438201397}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1998846090
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998846088}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 39221c61b7d046447a2d579824f56408, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2000350795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26773,11 +28995,122 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0b581e3b15b5114eb8f22370b3107bf, type: 3}
+--- !u!1 &2008818841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2008818842}
+  - component: {fileID: 2008818843}
+  m_Layer: 0
+  m_Name: Polio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2008818842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008818841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061181759}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008818843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008818841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain30
+  - Throat30
+  - Stomach & gut30
+  - Bone marrow30
+  VirusType: 1
+  desc: 'This virus causes headache, sore throat, vomiting, back pain and muscle
+    stiffness. '
+  yellowDamage: 30
+  greenHealth: 30
+  attackArea: 0
 --- !u!1 &2012259370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5782934694029681844, guid: f7f00521dac878a4c8116e0eed9e0489, type: 3}
   m_PrefabInstance: {fileID: 445475005}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2025439435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2025439436}
+  - component: {fileID: 2025439437}
+  m_Layer: 0
+  m_Name: Syphilis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2025439436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025439435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1058136219}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025439437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025439435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d17f70c68782024b940fd434c12d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  componentDamages:
+  - Brain40
+  - Throat20
+  - Skin40
+  - Reproductive organs60
+  VirusType: 2
+  desc: 'This bacteria causes sore and swollen throat, hair loss, muscle and joint
+    pain, skin rash and sores on the reproductive organs. It can also lead to personality
+    changes, depression and insanity. '
+  yellowDamage: 20
+  greenHealth: 20
+  attackArea: 0
 --- !u!1 &2042403118
 GameObject:
   m_ObjectHideFlags: 0
@@ -27404,7 +29737,7 @@ GameObject:
   - component: {fileID: 2084423883}
   - component: {fileID: 2084423882}
   m_Layer: 5
-  m_Name: Image (8)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27972,7 +30305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.70006, y: 142.90001}
+  m_AnchoredPosition: {x: -154.00006, y: 142.90001}
   m_SizeDelta: {x: 77.7158, y: 77.7158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097423023
@@ -28238,7 +30571,7 @@ GameObject:
   - component: {fileID: 2122841841}
   - component: {fileID: 2122841842}
   m_Layer: 5
-  m_Name: Mid
+  m_Name: MID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

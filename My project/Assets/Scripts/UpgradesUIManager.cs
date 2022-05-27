@@ -62,7 +62,26 @@ public class UpgradesUIManager : MonoBehaviour
 
         UpgradesPanel.SetActive(true);
 
+        Sprite foundSprite = null;
 
+        foreach(Transform t in GameObject.Find("Canvas").transform.Find("InternalDefense").transform)
+        {
+            if (t.name.ToLower() == UIManager.selectedDefense.ToLower())
+            {
+                foundSprite = t.Find("Image").GetComponent<Image>().sprite;
+            }
+        }
+
+        foreach (Transform t in GameObject.Find("Canvas").transform.Find("ExternalDefense").transform)
+        {
+            if (t.name.ToLower() == UIManager.selectedDefense.ToLower())
+            {
+                print(t.Find("Image"));
+                foundSprite = t.Find("Image").GetComponent<Image>().sprite;
+            }
+        }
+
+        UpgradesPanel.transform.Find("UpgradesTitle").Find("Icon").GetComponent<Image>().sprite = foundSprite;
         UpgradesPanel.transform.Find("UpgradesTitle").Find("title").GetComponent<TextMeshProUGUI>().text = UIManager.selectedDefense + " Upgrades";
 
         StartCoroutine(openUpgradeInfo(foundPanel));

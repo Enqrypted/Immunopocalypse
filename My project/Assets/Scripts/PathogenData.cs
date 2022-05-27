@@ -11,6 +11,13 @@ public enum pathogenType
     Bacteria
 }
 
+public enum pathogenArea
+{
+    top,
+    mid,
+    bot
+}
+
 public class PathogenData : MonoBehaviour
 {
 
@@ -31,6 +38,7 @@ public class PathogenData : MonoBehaviour
     public int yellowDamage = 50;
     public int greenHealth = 50;
 
-
+    [SerializeField]
+    public pathogenArea attackArea = pathogenArea.bot;
 
 }

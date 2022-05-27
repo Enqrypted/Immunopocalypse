@@ -87,6 +87,12 @@ public class UpgradeInfoManager : MonoBehaviour
                     }
 
                 }
+                else
+                {
+
+                    roundManager.ShowTip("Not enough immunopoints!");
+
+                }
             }
         }
     }
@@ -98,14 +104,21 @@ public class UpgradeInfoManager : MonoBehaviour
             if ((targUpgrade.LevelPrices.Count > 1) && (targUpgrade.UpgradeLevel == 1))
             {
                 //BUY LVL 2
-                if (targUpgrade.LevelPrices[0] <= roundManager.Immunopoints)
+                if (targUpgrade.LevelPrices[1] <= roundManager.Immunopoints)
                 {
 
                     ((GameObject)Instantiate(Resources.Load("UpgradeAudio"))).GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(.75f, 1.25f);
 
-                    roundManager.Immunopoints -= targUpgrade.LevelPrices[0];
+                    roundManager.Immunopoints -= targUpgrade.LevelPrices[1];
                     targUpgrade.UpgradeLevel = 2;
                     DisplayUpgrade();
+                    gameObject.GetComponent<Image>().color = new Color(.5f, 1f, .5f);
+
+                }
+                else
+                {
+
+                    roundManager.ShowTip("Not enough immunopoints!");
 
                 }
             }
@@ -117,9 +130,37 @@ public class UpgradeInfoManager : MonoBehaviour
         if (targUpgrade != null && unlocked)
         {
             roundManager.selectedUpgrade = targUpgrade;
+
+            string foundUpgradeFunc = "";
+
+            foreach (KeyValuePair<string, int> entry in roundManager.upgradesFunctionality.DamagePathogen_Upgrades) {
+                if(entry.Key.ToLower().Trim() == targUpgrade.UpgradeName.ToLower().Trim())
+                {
+                    foundUpgradeFunc = "Increases damage done to pathogen";
+                }
+            }
+
+            foreach (KeyValuePair<string, int> entry in roundManager.upgradesFunctionality.DamageToDefense_Upgrades)
+            {
+                if (entry.Key.ToLower().Trim() == targUpgrade.UpgradeName.ToLower().Trim())
+                {
+                    foundUpgradeFunc = "Decreases amount of damage taken to this body part";
+                }
+            }
+
+            foreach (KeyValuePair<string, int> entry in roundManager.upgradesFunctionality.HealDefense_Upgrades)
+            {
+                if (entry.Key.ToLower().Trim() == targUpgrade.UpgradeName.ToLower().Trim())
+                {
+                    foundUpgradeFunc = "Increases amount of healing from green bubbles to this body part";
+                }
+            }
+
+
             GameObject infoPanel = GameObject.FindGameObjectWithTag("UpgradesInfo");
             infoPanel.transform.Find("UpgradeName").GetComponent<TextMeshProUGUI>().text = upgradeName;
             infoPanel.transform.Find("InfoPanel").Find("upgradeDesc").GetComponent<TextMeshProUGUI>().text = targUpgrade.UpgradeDescription;
+            infoPanel.transform.Find("UpgradeDesc").GetComponent<TextMeshProUGUI>().text = foundUpgradeFunc;
 
             infoPanel.transform.Find("Lvl1Buy").Find("text").GetComponent<TextMeshProUGUI>().text = "Buy - " + targUpgrade.LevelPrices[0].ToString();
 
@@ -143,7 +184,8 @@ public class UpgradeInfoManager : MonoBehaviour
             {
                 lvl1UI[2].SetActive(true);
                 lvl2UI[2].SetActive(false);
-            }else if(targUpgrade.UpgradeLevel == 1)
+            }
+            else if (targUpgrade.UpgradeLevel == 1)
             {
                 lvl1UI[2].SetActive(false);
                 lvl2UI[2].SetActive(true);
@@ -154,6 +196,11 @@ public class UpgradeInfoManager : MonoBehaviour
                 lvl2UI[2].SetActive(false);
             }
 
+        }
+        else{
+            if (targUpgrade != null) {
+                roundManager.ShowTip("This upgrade required the following upgrades to be unlocked: " + string.Join(",", upgradeReqs));
+            }
         }
     }
 
